@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCFORM | Checkout</title>
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-black text-white font-body">
+
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 w-full z-100 flex justify-between items-center px-8 py-4 transition-all">
+        <div class="logo font-display text-2xl tracking-widest uppercase"><a href="../public/home.html">Arcform</a></div>
+        <div class="links hidden md:flex gap-8 text-sm tracking-widest uppercase">
+            <a href="../public/shop.html">Shop</a>
+            <a href="../public/categories.html">Collections</a>
+            <a href="../public/about.html">About</a>
+        </div>
+        <div class="actions flex gap-6 text-sm">
+            <a href="../user/wishlist.html" class="hover:text-accent">Wishlist</a>
+            <a href="../user/cart.html" class="hover:text-accent">Cart <span class="cart-badge bg-accent text-black rounded-full px-2 text-xs ml-1" style="display:none;">0</span></a>
+            <a href="#" class="account-icon hover:text-accent">Account</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24 pb-20 px-8 container">
+        <h1 class="font-display text-4xl mb-8 uppercase tracking-wider">Checkout</h1>
+        <div class="content opacity-0 animate-fade-in-up">
+            <p class="text-gray-400">This is the Checkout page for ARCFORM. Complete implementation as per the premium streetwear aesthetic.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-top border-gray-200 py-12 px-8">
+        <div class="container grid grid-3 gap-8">
+            <div>
+                <h3 class="font-display text-2xl tracking-widest uppercase mb-4">Arcform</h3>
+                <p class="text-sm text-gray-500">Precision crafted for those who dare to exist differently.</p>
+            </div>
+            <div class="flex flex-col gap-2 text-sm text-gray-400">
+                <a href="../public/shop.html" class="hover:text-accent">Shop</a>
+                <a href="../public/about.html" class="hover:text-accent">About Us</a>
+                <a href="../public/contact.html" class="hover:text-accent">Contact</a>
+            </div>
+            <div class="flex flex-col gap-2 text-sm text-gray-400">
+                <a href="../public/faq.html" class="hover:text-accent">FAQ</a>
+                <a href="../public/terms.html" class="hover:text-accent">Terms</a>
+                <a href="../public/privacy.html" class="hover:text-accent">Privacy</a>
+            </div>
+        </div>
+        <div class="container text-center text-xs text-gray-600 mt-12">
+            © 2025 ARCFORM. All rights reserved.
+        </div>
+    </footer>
+
+    <script type="module" src="../../assets/js/utils.js"></script>
+    <script type="module" src="../../assets/js/api.js"></script>
+    <script type="module" src="../../assets/js/auth.js"></script>
+    <script type="module" src="../../assets/js/cart.js"></script>
+</body>
+</html>

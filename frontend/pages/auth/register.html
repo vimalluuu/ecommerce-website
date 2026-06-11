@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCFORM | Register</title>
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            background: linear-gradient(135deg, var(--black) 0%, #0d0d0d 100%);
+        }
+        
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: var(--black);
+            padding: 4rem 3rem;
+            border: 1px solid var(--gray-800);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .auth-logo {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 3rem;
+            display: block;
+        }
+        
+        .auth-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .auth-subtitle {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+        }
+        
+        .form-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--gray-600);
+            color: var(--white);
+            padding: 0.75rem 0;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color var(--transition);
+        }
+        
+        .form-input:focus { border-color: var(--accent); }
+        .form-input::placeholder { color: var(--gray-700); }
+        
+        .btn-auth {
+            background: var(--white);
+            color: var(--black);
+            font-family: var(--font-body);
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1rem;
+            border: none;
+            margin-top: 1rem;
+            transition: all var(--transition);
+        }
+        .btn-auth:hover { background: var(--accent); }
+        
+        .auth-switch {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        .auth-switch a { color: var(--accent); font-weight: 500; }
+        
+        .auth-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-heading);
+            font-size: 25vw;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.02);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .back-nav {
+            position: absolute;
+            top: 2rem; left: 2rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--gray-500); z-index: 10;
+        }
+        .back-nav:hover { color: var(--accent); }
+    </style>
+</head>
+<body class="bg-black text-white font-body">
+
+    <a href="../public/home.html" class="back-nav">← Back to Store</a>
+
+    <div class="auth-container">
+        <div class="auth-bg-text">FORM</div>
+        
+        <div class="auth-card animate-fade-in-up">
+            <a href="../public/home.html" class="auth-logo">Arcform</a>
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join ARCFORM to track orders and save your preferences.</p>
+            
+            <form class="auth-form" id="registerForm">
+                <div class="form-group">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" class="form-input" placeholder="John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address</label>
+                    <input type="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-input" placeholder="Create a password" required>
+                </div>
+                
+                <button type="submit" class="btn-auth">Register</button>
+            </form>
+            
+            <div class="auth-switch">
+                Already have an account? <a href="login.html">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

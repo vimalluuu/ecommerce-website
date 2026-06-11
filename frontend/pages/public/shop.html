@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCFORM | Shop Collection</title>
+    <link rel="stylesheet" href="../../assets/css/base.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    <link rel="stylesheet" href="../../assets/css/animations.css">
+    <style>
+        .shop-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        .shop-sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            border-right: 1px solid var(--gray-700);
+            padding-right: 2rem;
+            min-height: calc(100vh - 200px);
+        }
+        .filter-section {
+            margin-bottom: 3rem;
+        }
+        .filter-title {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+        .filter-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .filter-list label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            color: var(--gray-400);
+            font-size: 0.85rem;
+            transition: color var(--transition);
+        }
+        .filter-list label:hover {
+            color: var(--white);
+        }
+        .filter-list input[type="checkbox"] {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--gray-500);
+            border-radius: 2px;
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+        }
+        .filter-list input[type="checkbox"]:checked {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .filter-list input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            color: var(--black);
+            font-size: 12px;
+            top: -1px;
+            left: 2px;
+        }
+        
+        .shop-main {
+            flex-grow: 1;
+        }
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-700);
+        }
+        .product-count {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+        .sort-select {
+            background: transparent;
+            border: 1px solid var(--gray-500);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            outline: none;
+        }
+        .sort-select option {
+            background: var(--black);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        /* Mocking Product Cards from components */
+        .product-card {
+            background: var(--gray-900);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform var(--transition);
+        }
+        .product-card:hover { transform: translateY(-6px); }
+        .product-card-image {
+            aspect-ratio: 3/4;
+            background: var(--gray-800);
+            position: relative;
+            overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 2rem; color: var(--gray-500);
+        }
+        .product-card-info { padding: 1.25rem; }
+        .product-card-name {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+        .product-price {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--accent);
+        }
+
+        @media (max-width: 1024px) {
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .shop-container { flex-direction: column; gap: 2rem; }
+            .shop-sidebar { width: 100%; min-height: auto; border-right: none; border-bottom: 1px solid var(--gray-700); padding-bottom: 2rem; display: flex; gap: 3rem; overflow-x: auto; }
+            .filter-section { margin-bottom: 0; min-width: 200px; }
+        }
+        @media (max-width: 768px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="bg-black text-white font-body">
+
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 w-full z-100 flex justify-between items-center px-8 py-4 transition-all bg-black border-bottom border-gray-700">
+        <div class="logo font-display text-2xl tracking-widest uppercase"><a href="home.html">Arcform</a></div>
+        <div class="links hidden md:flex gap-8 text-sm tracking-widest uppercase">
+            <a href="shop.html" class="text-accent">Shop</a>
+            <a href="categories.html" class="hover:text-accent">Collections</a>
+            <a href="about.html" class="hover:text-accent">About</a>
+        </div>
+        <div class="actions flex gap-6 text-sm">
+            <a href="../user/wishlist.html" class="hover:text-accent">Wishlist</a>
+            <a href="../user/cart.html" class="hover:text-accent">Cart <span class="cart-badge bg-accent text-black rounded-full px-2 text-xs ml-1" style="display:none;">0</span></a>
+            <a href="../auth/login.html" class="account-icon hover:text-accent">Account</a>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-32 pb-20 px-12 max-w-[1600px] mx-auto">
+        <h1 class="font-display text-5xl mb-4 uppercase tracking-wider">The Collection</h1>
+        <p class="text-gray-400 max-w-2xl text-sm">Explore our curated selection of premium streetwear. Precision garments constructed for utility and distinct aesthetics.</p>
+
+        <div class="shop-container">
+            <!-- Sidebar Filters -->
+            <aside class="shop-sidebar animate-fade-in-up">
+                <div class="filter-section">
+                    <h3 class="filter-title">Categories</h3>
+                    <ul class="filter-list" id="category-filters">
+                        <li><label><input type="checkbox" value="outerwear"> Outerwear</label></li>
+                        <li><label><input type="checkbox" value="hoodies"> Hoodies & Sweats</label></li>
+                        <li><label><input type="checkbox" value="tees"> Heavyweight Tees</label></li>
+                        <li><label><input type="checkbox" value="bottoms"> Bottoms & Cargos</label></li>
+                        <li><label><input type="checkbox" value="accessories"> Accessories</label></li>
+                    </ul>
+                </div>
+                <div class="filter-section">
+                    <h3 class="filter-title">Color</h3>
+                    <ul class="filter-list">
+                        <li><label><input type="checkbox" value="black"> Obsidian Black</label></li>
+                        <li><label><input type="checkbox" value="white"> Bone White</label></li>
+                        <li><label><input type="checkbox" value="grey"> Concrete Grey</label></li>
+                        <li><label><input type="checkbox" value="olive"> Tactical Olive</label></li>
+                    </ul>
+                </div>
+                <div class="filter-section">
+                    <h3 class="filter-title">Size</h3>
+                    <ul class="filter-list">
+                        <li><label><input type="checkbox" value="s"> Small</label></li>
+                        <li><label><input type="checkbox" value="m"> Medium</label></li>
+                        <li><label><input type="checkbox" value="l"> Large</label></li>
+                        <li><label><input type="checkbox" value="xl"> X-Large</label></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Product Grid -->
+            <div class="shop-main">
+                <div class="shop-header animate-fade-in-up">
+                    <div class="product-count">Showing 12 pieces</div>
+                    <select class="sort-select">
+                        <option value="newest">Sort by: Newest Arrivals</option>
+                        <option value="price_asc">Sort by: Price (Low to High)</option>
+                        <option value="price_desc">Sort by: Price (High to Low)</option>
+                    </select>
+                </div>
+
+                <div class="products-grid animate-fade-in-up" style="animation-delay: 0.1s" id="product-grid">
+                    
+                    <!-- Dummy Product 1 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 1</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Outerwear</p>
+                            <h3 class="product-card-name">Void Nylon Bomber</h3>
+                            <div class="product-price">₹12,499</div>
+                        </div>
+                    </a>
+
+                    <!-- Dummy Product 2 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 2</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Hoodies</p>
+                            <h3 class="product-card-name">Oversized Heavyweight Hoodie</h3>
+                            <div class="product-price">₹6,999</div>
+                        </div>
+                    </a>
+
+                    <!-- Dummy Product 3 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 3</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Bottoms</p>
+                            <h3 class="product-card-name">Tactical Cargo Pants</h3>
+                            <div class="product-price">₹8,999</div>
+                        </div>
+                    </a>
+
+                    <!-- Dummy Product 4 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 4</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Tees</p>
+                            <h3 class="product-card-name">Essential Boxy Tee</h3>
+                            <div class="product-price">₹3,499</div>
+                        </div>
+                    </a>
+
+                    <!-- Dummy Product 5 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 5</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Outerwear</p>
+                            <h3 class="product-card-name">Structure Trench Coat</h3>
+                            <div class="product-price">₹18,999</div>
+                        </div>
+                    </a>
+
+                    <!-- Dummy Product 6 -->
+                    <a href="product-detail.html" class="product-card">
+                        <div class="product-card-image">Image 6</div>
+                        <div class="product-card-info">
+                            <p class="font-mono text-xs text-gray-500 mb-1 tracking-widest uppercase">Accessories</p>
+                            <h3 class="product-card-name">Monochrome Crossbody</h3>
+                            <div class="product-price">₹4,999</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-16 px-12 mt-20">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="font-display text-3xl tracking-widest uppercase mb-6 text-white">Arcform</h3>
+                <p class="text-sm text-gray-500 max-w-sm">Precision crafted for those who dare to exist differently. Elevating everyday utility through minimalist aesthetics.</p>
+            </div>
+            <div class="flex flex-col gap-3 text-sm text-gray-400">
+                <h4 class="font-mono text-accent uppercase tracking-widest mb-2">Explore</h4>
+                <a href="shop.html" class="hover:text-white transition-colors">Shop</a>
+                <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            <div class="flex flex-col gap-3 text-sm text-gray-400">
+                <h4 class="font-mono text-accent uppercase tracking-widest mb-2">Support</h4>
+                <a href="faq.html" class="hover:text-white transition-colors">FAQ</a>
+                <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                <a href="privacy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+        </div>
+        <div class="max-w-[1440px] mx-auto border-t border-gray-800 text-center text-xs text-gray-600 mt-16 pt-8 uppercase tracking-widest">
+            © 2025 ARCFORM. All rights reserved.
+        </div>
+    </footer>
+
+    <script type="module" src="../../assets/js/utils.js"></script>
+    <script type="module" src="../../assets/js/api.js"></script>
+    <script type="module" src="../../assets/js/auth.js"></script>
+    <script type="module" src="../../assets/js/cart.js"></script>
+</body>
+</html>

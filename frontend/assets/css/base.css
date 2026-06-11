@@ -1,0 +1,578 @@
+/* ==========================================================================
+   ARCFORM — Base Design System
+   Master tokens, reset, and utility classes
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ==========================================================================
+   DESIGN TOKENS
+   ========================================================================== */
+
+:root {
+  /* ---- Colors ---- */
+  --black: #080808;
+  --white: #f8f6f2;
+  --gray-50: #111111;
+  --gray-100: #1c1c1c;
+  --gray-200: #2a2a2a;
+  --gray-300: #3d3d3d;
+  --gray-400: #606060;
+  --gray-500: #8a8a8a;
+  --gray-600: #b0b0b0;
+  --accent: #c9a96e;
+  --accent-light: #e8d5b0;
+  --accent-dark: #a07840;
+  --error: #e05252;
+  --success: #52a882;
+  --warning: #e0a952;
+  --info: #527ae0;
+
+  /* ---- Typography ---- */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+
+  /* ---- Spacing Scale ---- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ---- Transitions ---- */
+  --transition-fast:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow:   500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---- Shadows ---- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.8);
+  --shadow-accent: 0 4px 24px rgba(201, 169, 110, 0.25);
+
+  /* ---- Layout ---- */
+  --max-width:  1440px;
+  --nav-height: 72px;
+  --sidebar-width: 260px;
+}
+
+/* ==========================================================================
+   CSS RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---- Typography Reset ---- */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+h1 {
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+p {
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* ==========================================================================
+   CUSTOM SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--gray-300) var(--gray-50);
+}
+
+/* ==========================================================================
+   LAYOUT UTILITIES
+   ========================================================================== */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+.section-pad {
+  padding: var(--space-20) 0;
+}
+
+.section-pad-sm {
+  padding: var(--space-12) 0;
+}
+
+.section-pad-lg {
+  padding: var(--space-24) 0;
+}
+
+/* ==========================================================================
+   GRID UTILITIES
+   ========================================================================== */
+
+.grid {
+  display: grid;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+}
+
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   FLEXBOX UTILITIES
+   ========================================================================== */
+
+.flex          { display: flex; }
+.flex-col      { flex-direction: column; }
+.flex-wrap     { flex-wrap: wrap; }
+.flex-1        { flex: 1; }
+.items-start   { align-items: flex-start; }
+.items-center  { align-items: center; }
+.items-end     { align-items: flex-end; }
+.justify-start   { justify-content: flex-start; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+.gap-1  { gap: var(--space-1); }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+
+/* ==========================================================================
+   SPACING UTILITIES
+   ========================================================================== */
+
+/* Margin Top */
+.mt-1  { margin-top: var(--space-1); }
+.mt-2  { margin-top: var(--space-2); }
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+.mt-16 { margin-top: var(--space-16); }
+.mt-20 { margin-top: var(--space-20); }
+
+/* Margin Bottom */
+.mb-1  { margin-bottom: var(--space-1); }
+.mb-2  { margin-bottom: var(--space-2); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+
+/* Padding */
+.p-4   { padding: var(--space-4); }
+.p-6   { padding: var(--space-6); }
+.p-8   { padding: var(--space-8); }
+.px-4  { padding-left: var(--space-4); padding-right: var(--space-4); }
+.px-6  { padding-left: var(--space-6); padding-right: var(--space-6); }
+.py-4  { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.py-6  { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+.text-xs   { font-size: 0.75rem; }
+.text-sm   { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg   { font-size: 1.125rem; }
+.text-xl   { font-size: 1.25rem; }
+.text-2xl  { font-size: 1.5rem; }
+.text-3xl  { font-size: 1.875rem; }
+.text-4xl  { font-size: 2.25rem; }
+
+.font-light    { font-weight: 300; }
+.font-normal   { font-weight: 400; }
+.font-medium   { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold     { font-weight: 700; }
+.font-black    { font-weight: 900; }
+
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+.uppercase  { text-transform: uppercase; }
+.lowercase  { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.italic     { font-style: italic; }
+
+.text-left   { text-align: left; }
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+.tracking-tight  { letter-spacing: -0.05em; }
+.tracking-normal { letter-spacing: 0; }
+.tracking-wide   { letter-spacing: 0.05em; }
+.tracking-wider  { letter-spacing: 0.1em; }
+.tracking-widest { letter-spacing: 0.2em; }
+
+.leading-none   { line-height: 1; }
+.leading-tight  { line-height: 1.25; }
+.leading-snug   { line-height: 1.375; }
+.leading-normal { line-height: 1.6; }
+.leading-relaxed { line-height: 1.75; }
+
+/* Color Utilities */
+.text-white   { color: var(--white); }
+.text-black   { color: var(--black); }
+.text-accent  { color: var(--accent); }
+.text-muted   { color: var(--gray-500); }
+.text-light   { color: var(--gray-600); }
+.text-error   { color: var(--error); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+
+/* ==========================================================================
+   BACKGROUND UTILITIES
+   ========================================================================== */
+
+.bg-black    { background-color: var(--black); }
+.bg-gray-50  { background-color: var(--gray-50); }
+.bg-gray-100 { background-color: var(--gray-100); }
+.bg-gray-200 { background-color: var(--gray-200); }
+.bg-accent   { background-color: var(--accent); }
+.bg-white    { background-color: var(--white); }
+
+/* ==========================================================================
+   BORDER UTILITIES
+   ========================================================================== */
+
+.border        { border: 1px solid var(--gray-200); }
+.border-top    { border-top: 1px solid var(--gray-200); }
+.border-bottom { border-bottom: 1px solid var(--gray-200); }
+.border-accent { border-color: var(--accent); }
+.rounded-sm    { border-radius: var(--radius-sm); }
+.rounded       { border-radius: var(--radius-md); }
+.rounded-lg    { border-radius: var(--radius-lg); }
+.rounded-full  { border-radius: var(--radius-full); }
+
+/* ==========================================================================
+   VISIBILITY UTILITIES
+   ========================================================================== */
+
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.block        { display: block; }
+.inline-block { display: inline-block; }
+.inline       { display: inline; }
+
+/* Width / Height */
+.w-full    { width: 100%; }
+.h-full    { height: 100%; }
+.min-h-screen { min-height: 100vh; }
+
+/* Overflow */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto   { overflow: auto; }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed    { position: fixed; }
+.sticky   { position: sticky; }
+
+/* Z-index */
+.z-10  { z-index: 10; }
+.z-20  { z-index: 20; }
+.z-100 { z-index: 100; }
+
+/* Pointer */
+.cursor-pointer    { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+.select-none       { user-select: none; }
+
+/* Opacity */
+.opacity-0   { opacity: 0; }
+.opacity-50  { opacity: 0.5; }
+.opacity-75  { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+/* Transition */
+.transition       { transition: all var(--transition-normal); }
+.transition-fast  { transition: all var(--transition-fast); }
+.transition-slow  { transition: all var(--transition-slow); }
+
+/* ==========================================================================
+   DIVIDER
+   ========================================================================== */
+
+.divider {
+  height: 1px;
+  background: var(--gray-200);
+  border: none;
+  margin: var(--space-8) 0;
+}
+
+.divider-accent {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border: none;
+  margin: var(--space-8) 0;
+}
+
+/* ==========================================================================
+   ASPECT RATIO UTILITIES
+   ========================================================================== */
+
+.aspect-square   { aspect-ratio: 1 / 1; }
+.aspect-portrait { aspect-ratio: 3 / 4; }
+.aspect-video    { aspect-ratio: 16 / 9; }
+.aspect-wide     { aspect-ratio: 21 / 9; }
+
+/* ==========================================================================
+   MARQUEE STRIP
+   ========================================================================== */
+
+.marquee-strip {
+  overflow: hidden;
+  background: var(--accent);
+  padding: var(--space-3) 0;
+  white-space: nowrap;
+}
+
+.marquee-inner {
+  display: inline-flex;
+  gap: var(--space-8);
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-strip .marquee-item {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   EYEBROW COMPONENT
+   ========================================================================== */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: var(--space-3);
+}
+
+/* ==========================================================================
+   RESPONSIVE OVERRIDES
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+  .show-mobile { display: block !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}

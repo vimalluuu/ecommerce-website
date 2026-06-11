@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ARCFORM FAQ. Find answers to common questions about our collections, shipping, and care." />
+  <meta property="og:title" content="ARCFORM FAQ" />
+  <meta property="og:description" content="Frequently asked questions." />
+  <meta property="og:type" content="website" />
+  <title>ARCFORM | FAQ — Frequently Asked Questions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/css/base.css" />
+  <link rel="stylesheet" href="../../assets/css/components.css" />
+  <link rel="stylesheet" href="../../assets/css/animations.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #080808;
+      --white: #f8f6f2;
+      --accent: #c9a96e;
+      --accent-dark: #a8884d;
+      --gray-900: #111111;
+      --gray-800: #1a1a1a;
+      --gray-700: #2a2a2a;
+      --gray-500: #555555;
+      --gray-400: #888888;
+      --gray-200: #cccccc;
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --nav-h: 80px;
+      --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 3rem;
+      transition: background var(--transition), backdrop-filter var(--transition), box-shadow var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(8, 8, 8, 0.95);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(201, 169, 110, 0.2);
+    }
+    .nav-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--white);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; list-style: none; gap: 2.5rem; margin: 0 auto; }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-200);
+      transition: color var(--transition);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width var(--transition);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-actions { display: flex; align-items: center; gap: 1.25rem; }
+    .nav-icon-btn {
+      position: relative;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      color: var(--gray-200);
+      transition: color var(--transition);
+      cursor: pointer;
+      background: none; border: none;
+    }
+    .nav-icon-btn:hover { color: var(--accent); }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 6rem 2rem; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.1);
+      padding-bottom: 1.5rem;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+    .faq-question:hover { color: var(--white); }
+    .faq-answer {
+      font-size: 0.95rem;
+      color: var(--gray-200);
+      line-height: 1.8;
+    }
+    footer {
+      border-top: 1px solid rgba(201, 169, 110, 0.2);
+      padding: 3rem 2rem;
+      background: rgba(8, 8, 8, 0.5);
+    }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--gray-400);
+      margin-bottom: 0.75rem;
+      transition: color var(--transition);
+    }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom {
+      border-top: 1px solid rgba(201, 169, 110, 0.1);
+      padding-top: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 2.5rem; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a class="nav-logo" href="../public/home.html">ARC<span>FORM</span></a>
+    <ul class="nav-links">
+      <li><a href="../public/home.html">Home</a></li>
+      <li><a href="../public/shop.html">Shop</a></li>
+      <li><a href="../public/categories.html">Collections</a></li>
+      <li><a href="../public/about.html">About</a></li>
+      <li><a href="../public/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" aria-label="Search">🔍</button>
+      <button class="nav-icon-btn" aria-label="Wishlist">❤</button>
+      <button class="nav-icon-btn" aria-label="Cart">🛒</button>
+    </div>
+  </nav>
+
+  <main style="margin-top: var(--nav-h);">
+    <!-- Hero Section -->
+    <section class="section" style="padding: 8rem 2rem; background: linear-gradient(135deg, rgba(42,42,42,0.2) 0%, transparent 100%);">
+      <div class="container">
+        <h1 class="section-title">FAQ</h1>
+        <p style="font-size: 1.1rem; color: var(--gray-400);">Find answers to commonly asked questions about ARCFORM products, ordering, and care.</p>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="section">
+      <div class="container">
+        <div class="faq-item">
+          <h3 class="faq-question">What is ARCFORM?</h3>
+          <p class="faq-answer">ARCFORM is a luxury streetwear brand specializing in precision-crafted garments designed for individuals who value quality, minimalism, and authenticity. Our pieces are engineered with architectural precision and produced in limited quantities.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Where is ARCFORM based?</h3>
+          <p class="faq-answer">We operate studios in Los Angeles and Tokyo. Our design team collaborates internationally with master craftspeople and textile innovators to create our collections.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How do I determine my size?</h3>
+          <p class="faq-answer">We provide a detailed size guide on our website. Our garments are designed with precision tailoring, so fit may differ from standard retail. We recommend reviewing our measurement charts before ordering. Complimentary exchanges are available for size adjustments.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">What is your return policy?</h3>
+          <p class="faq-answer">We offer 14-day returns from the date of delivery for unworn items with original tags attached. Return shipping is complimentary for defective items. Gently worn items may be eligible for store credit.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How long does shipping take?</h3>
+          <p class="faq-answer">Standard domestic shipping takes 3-5 business days. International shipping typically arrives within 7-10 business days. All orders ship with tracking information.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Do you offer international shipping?</h3>
+          <p class="faq-answer">Yes, we ship to most countries worldwide. International shipping costs vary by destination. Customers may be responsible for customs duties and import taxes depending on their country.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How should I care for my ARCFORM pieces?</h3>
+          <p class="faq-answer">Garment care instructions are included with each piece. Most items are best maintained through dry cleaning or spot cleaning. Some technical fabrics can be hand-washed. We recommend reviewing the care tag before cleaning.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Are your products sustainable?</h3>
+          <p class="faq-answer">Sustainability is core to our mission. We use eco-consciously sourced materials, maintain ethical production practices, and offer limited quantities to prevent overproduction and waste.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">Do you offer sample sales or discounts?</h3>
+          <p class="faq-answer">We occasionally hold private sample sales for our mailing list subscribers. We do not offer seasonal discounts to protect the integrity and value of our brand.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3 class="faq-question">How can I contact customer service?</h3>
+          <p class="faq-answer">You can reach us via email at hello@arcform.studio or through our contact form. We typically respond within 24-48 hours during business days.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>ARCFORM</h4>
+          <p style="font-size: 0.9rem; color: var(--gray-400); line-height: 1.6;">Precision crafted luxury streetwear for those who exist differently.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <a href="../public/shop.html">All Items</a>
+          <a href="../public/categories.html">Collections</a>
+          <a href="../public/shop.html?category=outerwear">Outerwear</a>
+          <a href="../public/shop.html?category=accessories">Accessories</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="../public/about.html">About</a>
+          <a href="../public/contact.html">Contact</a>
+          <a href="../public/faq.html">FAQ</a>
+          <a href="../public/careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="../public/terms.html">Terms</a>
+          <a href="../public/privacy.html">Privacy</a>
+          <a href="../public/return-policy.html">Returns</a>
+          <a href="../public/shipping.html">Shipping</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 ARCFORM Studios. All rights reserved. Precision crafted globally, inspired locally.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

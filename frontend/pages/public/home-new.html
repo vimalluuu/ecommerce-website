@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ARCFORM — Premium luxury streetwear. Precision crafted for those who dare to exist differently. Shop SS 2025 collection.">
+<meta property="og:title" content="ARCFORM | Luxury Streetwear">
+<meta property="og:description" content="Precision crafted for those who dare to exist differently.">
+<title>ARCFORM | Luxury Streetwear — SS 2025</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "on-error": "#690005",
+        "on-surface-variant": "#cfc4c5",
+        "surface": "#121414",
+        "outline": "#988e90",
+        "primary": "#c6c6c6",
+        "on-tertiary-container": "#747575",
+        "inverse-surface": "#e2e2e2",
+        "on-surface": "#e2e2e2",
+        "on-secondary-fixed-variant": "#474746",
+        "on-primary-fixed": "#1b1b1b",
+        "tertiary-fixed-dim": "#c6c6c6",
+        "surface-variant": "#333535",
+        "inverse-on-surface": "#2f3131",
+        "error": "#ffb4ab",
+        "on-tertiary": "#2f3131",
+        "surface-container-lowest": "#0c0f0f",
+        "surface-container-highest": "#333535",
+        "secondary-container": "#474746",
+        "on-primary": "#303030",
+        "on-secondary": "#313030",
+        "primary-fixed-dim": "#c6c6c6",
+        "surface-container": "#1e2020",
+        "on-secondary-fixed": "#1c1b1b",
+        "error-container": "#93000a",
+        "surface-container-low": "#1a1c1c",
+        "surface-tint": "#c6c6c6",
+        "secondary-fixed": "#e5e2e1",
+        "on-primary-fixed-variant": "#474747",
+        "outline-variant": "#4c4546",
+        "primary-fixed": "#e2e2e2",
+        "secondary-fixed-dim": "#c8c6c5",
+        "on-tertiary-fixed-variant": "#464747",
+        "tertiary": "#c6c6c6",
+        "on-secondary-container": "#b7b5b4",
+        "inverse-primary": "#5e5e5e",
+        "primary-container": "#000000",
+        "on-error-container": "#ffdad6",
+        "on-primary-container": "#757575",
+        "surface-container-high": "#282a2b",
+        "surface-bright": "#37393a",
+        "tertiary-fixed": "#e3e2e2",
+        "on-background": "#e2e2e2",
+        "surface-dim": "#121414",
+        "on-tertiary-fixed": "#1a1c1c",
+        "background": "#121414",
+        "tertiary-container": "#000000",
+        "secondary": "#c8c6c5"
+      },
+      borderRadius: {
+        "DEFAULT": "0.125rem",
+        "lg": "0.25rem",
+        "xl": "0.5rem",
+        "full": "0.75rem"
+      },
+      spacing: {
+        "margin-desktop": "64px",
+        "unit": "8px",
+        "container-max": "1440px",
+        "gutter": "24px",
+        "margin-mobile": "20px"
+      },
+      fontFamily: {
+        "headline-lg": ["Playfair Display"],
+        "body-md": ["Inter"],
+        "display-lg": ["Playfair Display"],
+        "body-lg": ["Inter"],
+        "label-md": ["Inter"]
+      },
+      fontSize: {
+        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "500" }],
+        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.01em", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }]
+      }
+    }
+  }
+}
+</script>
+<style>
+.glass-panel {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.product-card-hover:hover .product-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+.product-actions {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+</style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 transition-colors duration-300">
+<div class="flex items-center gap-12">
+<a class="font-headline-lg text-headline-lg font-medium tracking-tighter text-on-surface hover:opacity-70 transition-opacity duration-300" href="home.html">ARCFORM</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="home.html">Home</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="shop.html">Shop</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="categories.html">Collections</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-md text-label-md" href="contact.html">Contact</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button aria-label="search" class="text-primary hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">search</span>
+</button>
+<button aria-label="favorite" class="text-primary hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">favorite</span>
+</button>
+<button aria-label="person" class="text-primary hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">person</span>
+</button>
+<button aria-label="shopping_bag" class="text-primary hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">shopping_bag</span>
+</button>
+</div>
+</nav>
+
+<!-- Main Content -->
+<main class="flex-grow pt-[160px] pb-32 px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<section class="mb-20 flex flex-col justify-center min-h-[600px]">
+<div class="max-w-4xl mx-auto text-center">
+<h1 class="font-display-lg text-display-lg md:text-[64px] md:leading-[72px] text-on-surface mb-6 tracking-tighter">
+The Architecture<br>of Movement
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+Collection 04 redefines the boundaries between structured tailoring and fluid utility. Engineered for the modern environment.
+</p>
+<div class="flex gap-4 justify-center flex-wrap">
+<a class="bg-inverse-surface text-inverse-on-surface font-label-md text-label-md px-8 py-4 rounded hover:opacity-90 transition-opacity" href="shop.html">
+Explore Collection
+</a>
+<a class="bg-transparent border border-outline-variant text-on-surface font-label-md text-label-md px-8 py-4 rounded hover:border-on-surface transition-colors" href="categories.html">
+View Categories
+</a>
+</div>
+</div>
+</section>
+
+<!-- Featured Collections Grid -->
+<section class="py-32">
+<div class="flex justify-between items-end mb-16">
+<h2 class="font-display-lg text-display-lg text-on-surface tracking-tight">Curated<br>Formations</h2>
+<a class="font-label-md text-label-md text-primary flex items-center gap-2 hover:opacity-70 transition-opacity" href="categories.html">
+View All Categories <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[300px] md:auto-rows-[400px]">
+<!-- Large Item -->
+<div class="md:col-span-8 row-span-2 relative group overflow-hidden bg-surface-container rounded">
+<img alt="Outerwear Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYw6wQSgItpyX3jwu6RsvaQ5OuoBWk9-MkAVHk_DPLXwAIgyO1LYSedm0sLLkT8DqA_5R2dlokxwWpj8eJLtY1O3_aUDCxIZR5aLbjuXFpT-yMH2zrAbCKRusCBUdeGecCSrfA8wArHPFK-ytCy3-Rnj8YsvrMSgKV2DaO8QwHYbxPfsziv3VcSJXZn43lj3cr0m78LhdMsHIAzGOjRxJX4TOGtbsmVd-B4orR6uTs8FZ1wC6ZGHkHm_52Y-1qsgoLnHA0DPqkwQ" alt="Outerwear">
+<div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-background/90 to-transparent">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-2">Category</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-4">Technical Outerwear</h3>
+<a class="inline-block border-b border-on-surface pb-1 font-label-md text-label-md hover:text-primary hover:border-primary transition-colors" href="shop.html">Shop Now</a>
+</div>
+</div>
+<!-- Small Item 1 -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container rounded">
+<img alt="Accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl0uGtwz-1KxEz26TUDHg4r-Hhu7MTzMap5SA5mK4XJ7S4HhcwrR8ZPGKFc6siGYQDKehpKjBdiy9opdevTGChw7wwXGY0uQ0k1AVMRCqRKRu7R9K8JTUvqjzngtqrUmb34TSFqMh4Vu4JgKJ_wQZOcpI90qVNZ9Yi-EmQ9X7wiDpuvvhd70zD-5-UmAyWhnG7SvZufuj_o42Ayi4cgnWHfK6E6L_PafDpzlOw0Cv4OxxQ7VBwl3GUSEN_QUMx8AIwCaMOIehHuw" alt="Accessories">
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background/90 to-transparent">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2 text-[24px]">Hardware & Accessories</h3>
+<a class="inline-block border-b border-outline-variant pb-1 font-label-md text-label-md hover:text-primary transition-colors" href="shop.html">Shop Now</a>
+</div>
+</div>
+<!-- Small Item 2 -->
+<div class="md:col-span-4 relative group overflow-hidden bg-surface-container rounded">
+<img alt="Essentials" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcebZ0IPlR9yNd9N8axiTXb0wxQNeVtSEmcSyScdzrPkKWBPz1ySfSN33LWm_Uz5CPUMBdY8LVJefuE5WQ_-aAejhx5UJ2PIqJrCfsMUXTXg1K4jxOJTThwu3tG_bG4eHjBFYa0Rz2iWE4ParAZZ9PxPdrdgmT7VJmZlmiuZ0PpsJfKeX9-krwHnSoPQkNLY6qxA0SJ0tn7_XIi_tJdVsxAdFQ-qgTG601BXJRqqYmLXlpVVYGU-US9m0LMVJPLc9NJI-spHvqQ" alt="Essentials">
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background/90 to-transparent">
+<h3 class="font-headline-lg text-headline-lg text-on-surface mb-2 text-[24px]">Core Essentials</h3>
+<a class="inline-block border-b border-outline-variant pb-1 font-label-md text-label-md hover:text-primary transition-colors" href="shop.html">Shop Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-20">
+<div class="flex justify-between items-end mb-16">
+<h2 class="font-display-lg text-display-lg text-on-surface">Latest<br>Releases</h2>
+<a class="font-label-md text-label-md text-primary flex items-center gap-2 hover:opacity-70 transition-opacity" href="shop.html">
+View All <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Product Card 1 -->
+<div class="group product-card-hover cursor-pointer">
+<div class="relative w-full aspect-[3/4] mb-6 overflow-hidden bg-surface-container-low rounded">
+<img alt="Structured Wool Overcoat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHm455Aq1ab7r5IKBwWU84kQbqLDCSUyNvGW8EwxtmWDaKqFs1A3NLXfDQhjZIcVndjDJiralZtI7r1AoEidT9Ft-Wc4c0brxZMCIyyRLASKziXydrRYYeFKMu8YfKZ6T2yztdweud08bJyQWRoucX7h_QlV61_cy8KUU2Hbafkq2ChsG4isPi3y6yoZyjE3YMx2qLJj2Fr1yRmOOZ7SQ1yeEbXU0Fz3LF6MGcI6ljTiB2oDXF39a3w-w5O2_XcZ1RnStgkEMT_A" alt="Product">
+<div class="absolute top-4 left-4 glass-panel px-3 py-1 rounded border border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-on-surface">New</span>
+</div>
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 product-actions z-10">
+<button class="flex-grow bg-on-surface text-surface font-label-md text-label-md py-3 rounded hover:bg-surface-variant hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Bag
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors mb-2">Structured Wool Overcoat</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Black / Wool Blend</p>
+<p class="font-label-md text-label-md text-on-surface">$895</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group product-card-hover cursor-pointer">
+<div class="relative w-full aspect-[3/4] mb-6 overflow-hidden bg-surface-container-low rounded">
+<img alt="Asymmetric Knit Tunic" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWGMWy3WNpvkXq-WcoJ1v08kgeOcdav_Sy4GBAWlG9YxrrapEQt5SQi8QvBk82Qxl5kDWSUaJLPLLR1X6c_1MGn0ysv7lHnHrvLBhrw65_opmTeyvs4CO8hJ3QOdJ7-2FKI9Q3Uyw8zT9J8u0s7Pemyu871NcDLT9wFPq0IRlQHZCuWaVV6Zj3vUAdD-vzlOdCX4VeiCPnQSnd2ug8wKGLZSOwnLQDbZUsYMTAzf9vIGXuoTgyWnZzo6bFe8WGy_CFDgRrRknV8A" alt="Product">
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 product-actions z-10">
+<button class="flex-grow bg-on-surface text-surface font-label-md text-label-md py-3 rounded hover:bg-surface-variant hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Bag
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors mb-2">Asymmetric Knit Tunic</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Charcoal / Merino Wool</p>
+<p class="font-label-md text-label-md text-on-surface">$420</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group product-card-hover cursor-pointer">
+<div class="relative w-full aspect-[3/4] mb-6 overflow-hidden bg-surface-container-low rounded">
+<img alt="Technical Wide Trouser" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyIytciHLap7LTcAaKQ0x5iuTo8HYWKK-TO1REiSqhex71bYBygxDdq7L53f4P7yh9aexFhlGhM3vNdvUHiUF6KcmZwqnjrWKXeBXSy6McSafwKXiE37E4_PFIW1YmXBIW99Gz_YslEy_6mzERjYp0i6q9vi-6UkVr29P3NrMa6sVXnKCwgWkg1CV7vMEWtZDwIb1wxn5yeoG1BdsxGAbM2QSqbaMf9ulkNLn2U6iZ50FUOHJutwSrkDAgIDG_uMyshUeVzUklLw" alt="Product">
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 product-actions z-10">
+<button class="flex-grow bg-on-surface text-surface font-label-md text-label-md py-3 rounded hover:bg-surface-variant hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Bag
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors mb-2">Technical Wide Trouser</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Slate / Nylon Blend</p>
+<p class="font-label-md text-label-md text-on-surface">$350</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group product-card-hover cursor-pointer">
+<div class="relative w-full aspect-[3/4] mb-6 overflow-hidden bg-surface-container-low rounded">
+<img alt="Premium Product" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxcebZ0IPlR9yNd9N8axiTXb0wxQNeVtSEmcSyScdzrPkKWBPz1ySfSN33LWm_Uz5CPUMBdY8LVJefuE5WQ_-aAejhx5UJ2PIqJrCfsMUXTXg1K4jxOJTThwu3tG_bG4eHjBFYa0Rz2iWE4ParAZZ9PxPdrdgmT7VJmZlmiuZ0PpsJfKeX9-krwHnSoPQkNLY6qxA0SJ0tn7_XIi_tJdVsxAdFQ-qgTG601BXJRqqYmLXlpVVYGU-US9m0LMVJPLc9NJI-spHvqQ" alt="Product">
+<div class="absolute bottom-4 left-4 right-4 flex gap-2 product-actions z-10">
+<button class="flex-grow bg-on-surface text-surface font-label-md text-label-md py-3 rounded hover:bg-surface-variant hover:text-on-surface transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span> Add to Bag
+</button>
+</div>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors mb-2">Premium Accessory</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-2">Multiple Colors</p>
+<p class="font-label-md text-label-md text-on-surface">$280</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface w-full px-margin-mobile md:px-margin-desktop py-20 flex flex-col items-center gap-12 border-t border-outline-variant/10">
+<div class="font-headline-lg text-headline-lg text-primary text-center">ARCFORM</div>
+<div class="flex flex-wrap justify-center gap-6 md:gap-12">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors ease-in-out duration-300" href="about.html">About</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors ease-in-out duration-300" href="contact.html">Contact Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors ease-in-out duration-300" href="privacy.html">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors ease-in-out duration-300" href="terms.html">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors ease-in-out duration-300" href="faq.html">FAQ</a>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-center opacity-60">
+© 2024 ARCFORM. All Rights Reserved.
+</div>
+</footer>
+</body>
+</html>
