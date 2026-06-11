@@ -27,9 +27,40 @@
 
     <main class="min-h-screen pt-24 pb-20 px-8 container">
         <h1 class="font-display text-4xl mb-8 uppercase tracking-wider">Profile</h1>
-        <div class="content opacity-0 animate-fade-in-up">
-            <p class="text-gray-400">This is the Profile page for ARCFORM. Complete implementation as per the premium streetwear aesthetic.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-1">
+                <nav class="flex flex-col gap-2 bg-gray-900 border border-gray-800 p-4 rounded-sm">
+                    <a href="dashboard.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Dashboard</a>
+                    <a href="orders.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Orders</a>
+                    <a href="wishlist.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Wishlist</a>
+                    <a href="profile.html" class="py-3 px-4 bg-gray-800 text-accent font-mono text-xs uppercase tracking-widest">Profile</a>
+                </nav>
+            </div>
+            <div class="md:col-span-3">
+                <div class="bg-gray-900 border border-gray-800 p-8 rounded-sm max-w-2xl">
+                    <h2 class="font-display text-2xl text-white mb-6">Personal Information</h2>
+                    <form class="flex flex-col gap-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="flex flex-col gap-2">
+                                <label class="font-mono text-xs uppercase tracking-widest text-gray-500">First Name</label>
+                                <input type="text" value="Michael" class="bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-accent">
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <label class="font-mono text-xs uppercase tracking-widest text-gray-500">Last Name</label>
+                                <input type="text" value="Chen" class="bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-accent">
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label class="font-mono text-xs uppercase tracking-widest text-gray-500">Email Address</label>
+                            <input type="email" value="m.chen@example.com" class="bg-transparent border-b border-gray-700 py-2 text-white focus:outline-none focus:border-accent">
+                        </div>
+                        <button type="button" class="w-fit bg-white text-black px-8 py-3 mt-4 font-mono text-sm uppercase tracking-widest hover:bg-accent transition-colors">Save Changes</button>
+                    </form>
+                </div>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->

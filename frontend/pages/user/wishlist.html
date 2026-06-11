@@ -27,9 +27,22 @@
 
     <main class="min-h-screen pt-24 pb-20 px-8 container">
         <h1 class="font-display text-4xl mb-8 uppercase tracking-wider">Wishlist</h1>
-        <div class="content opacity-0 animate-fade-in-up">
-            <p class="text-gray-400">This is the Wishlist page for ARCFORM. Complete implementation as per the premium streetwear aesthetic.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-1">
+                <nav class="flex flex-col gap-2 bg-gray-900 border border-gray-800 p-4 rounded-sm">
+                    <a href="dashboard.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Dashboard</a>
+                    <a href="orders.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Orders</a>
+                    <a href="wishlist.html" class="py-3 px-4 bg-gray-800 text-accent font-mono text-xs uppercase tracking-widest">Wishlist</a>
+                    <a href="profile.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Profile</a>
+                </nav>
+            </div>
+            <div class="md:col-span-3">
+                <div class="wishlist-items grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
@@ -59,5 +72,6 @@
     <script type="module" src="../../assets/js/api.js"></script>
     <script type="module" src="../../assets/js/auth.js"></script>
     <script type="module" src="../../assets/js/cart.js"></script>
+    <script type="module" src="../../assets/js/wishlist-logic.js"></script>
 </body>
 </html>

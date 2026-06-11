@@ -27,9 +27,36 @@
 
     <main class="min-h-screen pt-24 pb-20 px-8 container">
         <h1 class="font-display text-4xl mb-8 uppercase tracking-wider">Orders</h1>
-        <div class="content opacity-0 animate-fade-in-up">
-            <p class="text-gray-400">This is the Orders page for ARCFORM. Complete implementation as per the premium streetwear aesthetic.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="md:col-span-1">
+                <nav class="flex flex-col gap-2 bg-gray-900 border border-gray-800 p-4 rounded-sm">
+                    <a href="dashboard.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Dashboard</a>
+                    <a href="orders.html" class="py-3 px-4 bg-gray-800 text-accent font-mono text-xs uppercase tracking-widest">Orders</a>
+                    <a href="wishlist.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Wishlist</a>
+                    <a href="profile.html" class="py-3 px-4 text-gray-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors">Profile</a>
+                </nav>
+            </div>
+            <div class="md:col-span-3">
+                <div class="bg-gray-900 border border-gray-800 p-8 rounded-sm">
+                    <h2 class="font-display text-2xl text-white mb-6">Order History</h2>
+                    <table class="w-full text-left text-sm">
+                        <thead class="text-gray-500 font-mono text-xs uppercase tracking-widest border-b border-gray-800">
+                            <tr>
+                                <th class="pb-4">Order</th>
+                                <th class="pb-4">Date</th>
+                                <th class="pb-4">Total</th>
+                                <th class="pb-4">Status</th>
+                                <th class="pb-4"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="orders-table-body text-gray-300">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
@@ -59,5 +86,6 @@
     <script type="module" src="../../assets/js/api.js"></script>
     <script type="module" src="../../assets/js/auth.js"></script>
     <script type="module" src="../../assets/js/cart.js"></script>
+    <script type="module" src="../../assets/js/dashboard-logic.js"></script>
 </body>
 </html>

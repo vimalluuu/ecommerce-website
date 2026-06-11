@@ -27,9 +27,45 @@
 
     <main class="min-h-screen pt-24 pb-20 px-8 container">
         <h1 class="font-display text-4xl mb-8 uppercase tracking-wider">Order Detail</h1>
-        <div class="content opacity-0 animate-fade-in-up">
-            <p class="text-gray-400">This is the Order Detail page for ARCFORM. Complete implementation as per the premium streetwear aesthetic.</p>
+        
+        <a href="orders.html" class="text-gray-500 font-mono text-xs uppercase tracking-widest hover:text-accent transition-colors mb-8 inline-block">← Back to Orders</a>
+        <div class="bg-gray-900 border border-gray-800 p-8 rounded-sm mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 pb-8 border-b border-gray-800">
+                <div>
+                    <h2 class="font-display text-2xl text-white mb-1">Order #ORD-091</h2>
+                    <p class="text-gray-500 font-mono text-xs uppercase tracking-widest">Placed on Yesterday, 10:42 AM</p>
+                </div>
+                <div class="bg-success text-black px-4 py-1 font-mono text-xs uppercase tracking-widest">Shipped</div>
+            </div>
+            
+            <h3 class="font-mono text-sm uppercase tracking-widest text-gray-500 mb-6">Items</h3>
+            <div class="flex flex-col gap-6 mb-8 pb-8 border-b border-gray-800">
+                <div class="flex gap-6 items-center">
+                    <div class="w-16 h-20 bg-gray-800"></div>
+                    <div class="flex-1">
+                        <h4 class="font-display text-lg text-white">Void Nylon Bomber</h4>
+                        <p class="text-gray-500 text-sm">Size: M | Color: Black</p>
+                    </div>
+                    <div class="font-mono text-accent">$340.00</div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col gap-2 max-w-xs ml-auto">
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-500">Subtotal</span>
+                    <span class="text-white font-mono">$340.00</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-500">Shipping</span>
+                    <span class="text-white font-mono">$15.00</span>
+                </div>
+                <div class="flex justify-between pt-4 mt-2 border-t border-gray-800">
+                    <span class="text-white font-display text-lg">Total</span>
+                    <span class="text-accent font-mono text-lg">$355.00</span>
+                </div>
+            </div>
         </div>
+
     </main>
 
     <!-- Footer -->
