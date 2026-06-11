@@ -1,4 +1,4 @@
-import { AuthAPI } from './api.js';
+import { getSupabase } from './api.js';
 
 export function isLoggedIn() {
   return !!localStorage.getItem('arcform_access_token');
@@ -10,42 +10,58 @@ export function getUser() {
 }
 
 export async function authLogin(email, password) {
-  const res = await AuthAPI.login({ email, password });
-  if (res.ok) {
-    const data = await res.json();
-    localStorage.setItem('arcform_access_token', data.access);
-    localStorage.setItem('arcform_refresh_token', data.refresh);
-    const profileRes = await AuthAPI.getProfile();
-    if (profileRes.ok) {
-      const profile = await profileRes.json();
-      localStorage.setItem('arcform_user', JSON.stringify(profile));
-    }
+  try {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) throw error;
     return true;
+  } catch (e) {
+    console.error("Supabase login error:", e);
+    return false;
   }
-  return false;
+}
+
+export async function authRegister(name, email, password) {
+  try {
+    const supabase = await getSupabase();
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name }
+      }
+    });
+    if (error) throw error;
+    return true;
+  } catch (e) {
+    console.error("Supabase registration error:", e);
+    return false;
+  }
 }
 
 export async function authLogout() {
-  const refresh = localStorage.getItem('arcform_refresh_token');
-  if (refresh) {
-    await AuthAPI.logout({ refresh });
+  try {
+    const supabase = await getSupabase();
+    await supabase.auth.signOut();
+  } catch (e) {
+    console.error("Supabase logout error:", e);
   }
   localStorage.removeItem('arcform_access_token');
   localStorage.removeItem('arcform_refresh_token');
   localStorage.removeItem('arcform_user');
-  window.location.href = '/frontend/pages/public/home.html';
+  window.location.href = '/pages/public/home.html';
 }
 
 export function requireAuth() {
   if (!isLoggedIn()) {
-    window.location.href = '/frontend/pages/auth/login.html';
+    window.location.href = '/pages/auth/login.html';
   }
 }
 
 export function requireAdmin() {
   const user = getUser();
   if (!user || !user.is_admin) {
-    window.location.href = '/frontend/pages/auth/login.html';
+    window.location.href = '/pages/auth/login.html';
   }
 }
 
@@ -54,11 +70,34 @@ export function updateNavForAuth() {
   const accIcon = document.querySelector('.account-icon');
   if (accIcon) {
     if (user) {
-      accIcon.href = user.is_admin ? '/frontend/pages/admin/dashboard.html' : '/frontend/pages/user/dashboard.html';
+      accIcon.href = user.is_admin ? '/pages/admin/dashboard.html' : '/pages/user/dashboard.html';
     } else {
-      accIcon.href = '/frontend/pages/auth/login.html';
+      accIcon.href = '/pages/auth/login.html';
     }
   }
 }
+
+// Setup state change listener for session synchronization
+getSupabase().then(supabase => {
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (session) {
+      localStorage.setItem('arcform_access_token', session.access_token);
+      if (session.refresh_token) {
+        localStorage.setItem('arcform_refresh_token', session.refresh_token);
+      }
+      localStorage.setItem('arcform_user', JSON.stringify({
+        id: session.user.id,
+        email: session.user.email,
+        name: session.user.user_metadata.name || session.user.email,
+        is_admin: session.user.user_metadata.is_admin || false
+      }));
+    } else {
+      localStorage.removeItem('arcform_access_token');
+      localStorage.removeItem('arcform_refresh_token');
+      localStorage.removeItem('arcform_user');
+    }
+    updateNavForAuth();
+  });
+}).catch(e => console.error("Failed to initialize Supabase auth listener", e));
 
 document.addEventListener('DOMContentLoaded', updateNavForAuth);

@@ -42,7 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'email', 'is_admin', 'is_email_verified', 'date_joined']
 
     def get_total_orders(self, obj):
-        return obj.orders.count()
+        return obj.order_set.count()
 
 
 class UserUpdateSerializer(serializers.ModelSerializer):

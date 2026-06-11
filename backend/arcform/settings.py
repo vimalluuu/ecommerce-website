@@ -95,6 +95,12 @@ DATABASES = {
 }
 
 # ---------------------------------------------------------------------------
+# SUPABASE CONFIG
+# ---------------------------------------------------------------------------
+SUPABASE_URL = config('SUPABASE_URL', default='')
+SUPABASE_KEY = config('SUPABASE_KEY', default='')
+
+# ---------------------------------------------------------------------------
 # AUTH
 # ---------------------------------------------------------------------------
 AUTH_USER_MODEL = 'users.User'
@@ -111,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # ---------------------------------------------------------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'apps.users.authentication.SupabaseAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',

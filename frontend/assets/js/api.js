@@ -1,50 +1,75 @@
 const API_BASE = 'http://localhost:8000/api';
 
+let supabaseInstance = null;
+
+async function loadSupabaseScript() {
+  if (window.supabase) return window.supabase;
+  return new Promise((resolve, reject) => {
+    const existingScript = document.querySelector('script[src*="supabase-js"]');
+    if (existingScript) {
+      existingScript.addEventListener('load', () => resolve(window.supabase));
+      existingScript.addEventListener('error', () => reject(new Error('Failed to load Supabase script')));
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2';
+    script.async = true;
+    script.onload = () => resolve(window.supabase);
+    script.onerror = () => reject(new Error('Failed to load Supabase script'));
+    document.head.appendChild(script);
+  });
+}
+
+export async function getSupabase() {
+  if (supabaseInstance) return supabaseInstance;
+  const sb = await loadSupabaseScript();
+  const SUPABASE_URL = 'https://vptxsqipcshkpjhzbhdt.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwdHhzcWlwY3Noa3BqaHpoYmR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODEwODExMzQsImV4cCI6MjA5NjY1NzEzNH0.Qrf0s1FwqwdnADiee89tod0xOOgS4wEaMl3HMgmZdHE';
+  
+  supabaseInstance = sb.createClient(SUPABASE_URL, SUPABASE_KEY);
+  return supabaseInstance;
+}
+
+// Auto-trigger load in background
+getSupabase().catch(e => console.error("Initial Supabase load failed", e));
+
 async function apiFetch(endpoint, options = {}) {
-  const token = localStorage.getItem('arcform_access_token');
+  let token = localStorage.getItem('arcform_access_token');
+  try {
+    const supabase = await getSupabase();
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      token = session.access_token;
+      localStorage.setItem('arcform_access_token', session.access_token);
+      if (session.refresh_token) {
+        localStorage.setItem('arcform_refresh_token', session.refresh_token);
+      }
+      localStorage.setItem('arcform_user', JSON.stringify({
+        id: session.user.id,
+        email: session.user.email,
+        name: session.user.user_metadata.name || session.user.email,
+        is_admin: session.user.user_metadata.is_admin || false
+      }));
+    }
+  } catch (e) {
+    console.error("Supabase session verification failed, using cache token", e);
+  }
+
   const headers = { 'Content-Type': 'application/json', ...options.headers };
   if (token) headers['Authorization'] = `Bearer ${token}`;
   
   const response = await fetch(`${API_BASE}${endpoint}`, { ...options, headers });
   
   if (response.status === 401) {
-    const refreshed = await refreshToken();
-    if (refreshed) {
-      const newToken = localStorage.getItem('arcform_access_token');
-      headers['Authorization'] = `Bearer ${newToken}`;
-      return fetch(`${API_BASE}${endpoint}`, { ...options, headers });
-    } else {
-      localStorage.removeItem('arcform_access_token');
-      localStorage.removeItem('arcform_refresh_token');
-      localStorage.removeItem('arcform_user');
-      window.location.href = '/frontend/pages/auth/login.html';
-    }
+    localStorage.removeItem('arcform_access_token');
+    localStorage.removeItem('arcform_refresh_token');
+    localStorage.removeItem('arcform_user');
+    window.location.href = '/pages/auth/login.html';
   }
   return response;
 }
 
-async function refreshToken() {
-  const refresh = localStorage.getItem('arcform_refresh_token');
-  if (!refresh) return false;
-  try {
-    const res = await fetch(`${API_BASE}/auth/token/refresh/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ refresh })
-    });
-    if (res.ok) {
-      const data = await res.json();
-      localStorage.setItem('arcform_access_token', data.access);
-      return true;
-    }
-  } catch (e) { console.error(e); }
-  return false;
-}
-
 export const AuthAPI = {
-  login: (data) => apiFetch('/auth/login/', { method: 'POST', body: JSON.stringify(data) }),
-  register: (data) => apiFetch('/auth/register/', { method: 'POST', body: JSON.stringify(data) }),
-  logout: (data) => apiFetch('/auth/logout/', { method: 'POST', body: JSON.stringify(data) }),
   getProfile: () => apiFetch('/auth/profile/'),
 };
 

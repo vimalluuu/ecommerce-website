@@ -63,10 +63,10 @@ export function getCartCount() {
 }
 
 export function updateCartBadge() {
-  const badge = document.querySelector('.cart-badge');
+  const badge = document.querySelector('.cart-badge, #cart-badge');
   if (badge) {
     badge.textContent = getCartCount();
-    badge.style.display = getCartCount() > 0 ? 'flex' : 'none';
+    badge.style.display = getCartCount() > 0 ? 'inline-block' : 'none';
   }
 }
 
